@@ -1,26 +1,18 @@
 // All JS code goes in this file.
 
 function palindrome(str){
-    var fwd = str.replace(/\W/g, '').toLowerCase().split('');
-    var bwd = Array.prototype.slice.call(fwd, 0).reverse();
-    return JSON.stringify(fwd) === JSON.stringify(bwd);
+    var fwd = str.replace(/\W/g, '').toLowerCase();
+    var back = fwd.split('').reverse().join('');
+    return fwd === back;
 }
 
-function coinDeterminer(num){
-    function getMax(num) {
-        var max = 1;
-        [25, 10, 5, 1].some(function(coin) {
-            max = coin;
-            return coin <= num;
-        });
-        return max;
-    }
-    var current = num, coin, counter = 0;;
-    while(current > 0) {
-        coin = getMax(current);
-        current -= coin;
-        ++counter;
-    }
+function coinDeterminer(num) {
+    var remainder = num, counter = 0;
+    [25, 10, 5, 1].forEach(function(coin) {
+        if(coin > remainder) { return true; }
+        counter += Math.floor(remainder / coin);
+        remainder %= coin;
+    });
     return counter;
 }
 
@@ -38,11 +30,10 @@ function countingMinutes(strArr){
     var time = strArr.split('-');
     var start = getMinutes(time[0]);
     var finish = getMinutes(time[1]);
-    if(finish < start) {
+    if(finish <= start) {
         finish += (24*60);
     }
-    var total = finish - start;
-    return (total === 0) ? 1440 : total;
+    return finish - start;
 
 }
 

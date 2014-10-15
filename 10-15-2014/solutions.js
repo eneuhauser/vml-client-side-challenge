@@ -18,7 +18,7 @@ function coinDeterminer(num) {
 
 function countingMinutes(strArr){
     function getMinutes(time) {
-        var parts = /(\w+):(\w{2})(\w{2})/.exec(time);
+        var parts = /(\d{1,2}):(\d{2})\s*(\w{2})/.exec(time);
         var hours = parseInt(parts[1]);
         var minutes = parseInt(parts[2]);
         var isMorning = parts[3] === 'am';

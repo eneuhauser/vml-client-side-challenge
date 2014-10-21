@@ -7,12 +7,8 @@ function palindrome(str){
 }
 
 function coinDeterminer(num) {
-    var coins = [25, 10, 5, 1];
     var remainder = num;
-    /* Map/Reduce could be combined, but cleaner to keep separate
-    return coins.reduce(function(counter, coin) { return counter += (remainder - (remainder %= coin)) / coin; }, 0);*/
-    var counts = coins.map(function(coin) { return (remainder - (remainder %= coin)) / coin; });
-    return counts.reduce(function(counter, count) { return counter += count; }, 0);
+    return [25, 10, 5, 1].reduce(function(counter, coin) { return counter += (remainder - (remainder %= coin)) / coin; }, 0);
 }
 
 function countingMinutes(strArr){

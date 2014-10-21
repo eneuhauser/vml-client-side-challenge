@@ -16,10 +16,10 @@ function countingMinutes(strArr){
         var parts = /(\d{1,2}):(\d{2})\s*(\w{2})/.exec(time);
         var hours = parseInt(parts[1]);
         var minutes = parseInt(parts[2]);
-        var isMorning = parts[3] === 'am';
+        var isEvening = parts[3] === 'pm';
 
-        if(isMorning && hours === 12) { hours = 0 }
-        else if(!isMorning) { hours += 12 }
+        if(hours === 12) { hours = (isEvening) ? 12 : 0; }
+        else if(isEvening) { hours += 12; }
         return hours * 60 + minutes;
     }
     var time = strArr.split('-');

@@ -35,4 +35,7 @@ describe('countingMinutes', function(){
     it('12:00pm-12:00pm should return 1440', function(){
         assert.equal(1440, solutions.countingMinutes('12:00pm-12:00pm'));
     });
+    it('11:00am-12:00pm should return 60', function(){
+        assert.equal(60, solutions.countingMinutes('11:00am-12:00pm'));
+    });
 });
